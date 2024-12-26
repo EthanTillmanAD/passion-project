@@ -2,7 +2,7 @@ package com.Pasionproject.PasionProject.entities_Tables;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 @Entity
 public class Cpus {
@@ -13,9 +13,10 @@ public class Cpus {
 
     private final String title = "CPU";
 
+    @NotEmpty
     private String name;
 
-
+    @NotNull
     private Integer cores;
 
 
@@ -36,11 +37,12 @@ public class Cpus {
         this.name = name;
     }
 
-    public  Integer getCores() {
+
+    public int getCores() {
         return cores;
     }
 
-    public void setCores (Integer cores) {
+    public void setCores( int cores) {
         this.cores = cores;
     }
 

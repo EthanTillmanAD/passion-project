@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 public class PcCase {
@@ -15,10 +16,10 @@ public class PcCase {
 
     private final String title = "PC CASE";
 
-
+    @NotEmpty
     private String name;
 
-
+    @NotEmpty
     private String color;
 
 

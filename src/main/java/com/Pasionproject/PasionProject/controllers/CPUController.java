@@ -3,6 +3,7 @@ package com.Pasionproject.PasionProject.controllers;
 
 import com.Pasionproject.PasionProject.entities_Tables.Cpus;
 import com.Pasionproject.PasionProject.services.CPUService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class CPUController {
     }
 
     @PostMapping("/cpu")
-    public ResponseEntity<Cpus> createNewCpu(@RequestBody Cpus cpu){
+    public ResponseEntity<Cpus> createNewCpu(@Valid @RequestBody Cpus cpu){
         return new ResponseEntity<>(cpuService.createCpu(cpu), HttpStatus.CREATED);
     }
 

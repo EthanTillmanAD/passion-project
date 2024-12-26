@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Graphics {
@@ -14,9 +16,10 @@ public class Graphics {
 
     private final String title = "Graphics";
 
-
+    @NotEmpty
     private String name;
 
+    @NotNull
     private Integer size;
 
     public Long getId() {

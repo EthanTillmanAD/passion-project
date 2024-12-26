@@ -61,4 +61,45 @@ public class ComputerService {
     public void deleteComputerById(Long id){
         computerRepo.deleteById(id);
     }
+
+    public Computer changeMotherBoard(Long computerId, Long motherBoardId){
+
+        Computer computer = findComputerById(computerId);
+
+        MotherBoard motherBoard = motherBoardService.findMotherBoardById(motherBoardId);
+
+        computer.setMotherBoard(motherBoard);
+
+      return computerRepo.save(computer);
+    }
+
+    public Computer changePowerSupply(Long computerId, Long powerId){
+
+        Computer computer = findComputerById(computerId);
+        PowerSupply powerSupply = powerSupplyService.findPowerSupplyById(powerId);
+
+        computer.setPowerSupply(powerSupply);
+
+        return computerRepo.save(computer);
+    }
+
+    public Computer changeCase(Long computerId, Long caseId){
+        Computer computer = findComputerById(computerId);
+        PcCase pcCase = caseService.findCaseById(caseId);
+
+        computer.setaCase(pcCase);
+        return computerRepo.save(computer);
+    }
+
+
+    public Boolean checkForComputer(Long id){
+        for (Computer computer: allComputersListed()){
+            if (computer.getId().equals(id)){
+                return true;
+
+            }
+        }
+
+        return false;
+    }
 }

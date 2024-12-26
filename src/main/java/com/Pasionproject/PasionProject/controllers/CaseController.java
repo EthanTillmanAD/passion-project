@@ -2,6 +2,7 @@ package com.Pasionproject.PasionProject.controllers;
 
 import com.Pasionproject.PasionProject.entities_Tables.PcCase;
 import com.Pasionproject.PasionProject.services.CaseService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +22,14 @@ public class CaseController {
         return new ResponseEntity<>(caseService.listOfCases(), HttpStatus.OK);
     }
 
+    @GetMapping("/case/{caseId}")
+    public ResponseEntity<PcCase> caseById(@PathVariable Long caseId){
+
+        return new ResponseEntity<>(caseService.findCaseById(caseId), HttpStatus.OK);
+    }
+
     @PostMapping("/case")
-    public ResponseEntity<PcCase> createCase(@RequestBody PcCase pcCase){
+    public ResponseEntity<PcCase> createCase(@Valid @RequestBody PcCase pcCase){
         return new ResponseEntity<>(caseService.createPcCase(pcCase), HttpStatus.CREATED);
     }
 

@@ -1,10 +1,10 @@
 package com.Pasionproject.PasionProject.entities_Tables;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 public class PowerSupply {
@@ -13,11 +13,13 @@ public class PowerSupply {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private final String title = "PS";
+    @JoinColumn(name = "title")
+    private final String title = "Ps";
 
+    @NotEmpty
     private String name;
 
-
+    @NotNull
     private Integer watts;
 
     public PowerSupply() {

@@ -2,6 +2,8 @@ package com.Pasionproject.PasionProject.entities_Tables;
 
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Computer {
@@ -15,14 +17,17 @@ public class Computer {
 
     @OneToOne
     @JoinColumn(name = "pc_case")
+    @NotNull
     private PcCase aCase;
 
     @OneToOne
     @JoinColumn(name = "power_supply")
+    @NotNull
     private PowerSupply powerSupply;
 
     @OneToOne
     @JoinColumn(name = "mother_board")
+    @NotNull
     private MotherBoard motherBoard;
 
     public Long getId() {

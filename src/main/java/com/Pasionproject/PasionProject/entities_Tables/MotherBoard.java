@@ -1,6 +1,8 @@
 package com.Pasionproject.PasionProject.entities_Tables;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.HashSet;
@@ -15,30 +17,33 @@ public class MotherBoard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "title")
+    @Column(name = "title")
     private final String title = "MB";
 
     @OneToOne
     @JoinColumn(name = "graphics")
+    @NotNull
     private Graphics graphics;
 
     @OneToOne
     @JoinColumn(name = "cpu")
+    @NotNull
     private Cpus cpu;
 
     @OneToMany
     @JoinColumn(name = "ram")
+    @NotNull
     @Size(min = 2, max = 4)
     private Set<Ram> ram = new HashSet<>();
 
     @OneToMany
     @JoinColumn(name = "ssdrive")
-    @Size(min = 1)
+    @NotNull
     private Set<SSDrive> ssd = new HashSet<>();
 
     @OneToMany
     @JoinColumn(name = "hdd")
-    @Size(min = 1)
+    @NotNull
     private Set<HDD> hdd = new HashSet<>();
 
 
@@ -74,27 +79,27 @@ public class MotherBoard {
         this.cpu = cpu;
     }
 
-    public @Size(min = 2, max = 4) Set<Ram> getRam() {
+    public Set<Ram> getRam() {
         return ram;
     }
 
-    public void setRam(@Size(min = 2, max = 4) Set<Ram> ram) {
+    public void setRam(Set<Ram> ram) {
         this.ram = ram;
     }
 
-    public @Size(min = 1) Set<SSDrive> getSsd() {
+    public  Set<SSDrive> getSsd() {
         return ssd;
     }
 
-    public void setSsd(@Size(min = 1) Set<SSDrive> ssd) {
+    public void setSsd( Set<SSDrive> ssd) {
         this.ssd = ssd;
     }
 
-    public @Size(min = 1) Set<HDD> getHdd() {
+    public  Set<HDD> getHdd() {
         return hdd;
     }
 
-    public void setHdd(@Size(min = 1) Set<HDD> hdd) {
+    public void setHdd( Set<HDD> hdd) {
         this.hdd = hdd;
     }
 
