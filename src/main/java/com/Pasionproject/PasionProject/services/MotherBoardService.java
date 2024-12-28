@@ -80,11 +80,6 @@ public class MotherBoardService {
 
     }
 
-//    public MotherBoard buildAllAtOnce(MotherBoard motherBoard){
-//       return motherBoardRepo.save(motherBoard);
-//    }
-
-
     public MotherBoard updateCpu(Long id, Cpus cpu){
 
 
