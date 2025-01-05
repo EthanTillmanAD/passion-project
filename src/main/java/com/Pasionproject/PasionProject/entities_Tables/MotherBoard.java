@@ -20,6 +20,9 @@ public class MotherBoard {
     @Column(name = "title")
     private final String title = "MB";
 
+    @NotEmpty
+    private String name;
+
     @OneToOne
     @JoinColumn(name = "graphics")
     @NotNull
@@ -115,5 +118,13 @@ public class MotherBoard {
 
     public String getTitle() {
         return title;
+    }
+
+    public @NotEmpty String getName() {
+        return name;
+    }
+
+    public void setName(@NotEmpty String name) {
+        this.name = name;
     }
 }

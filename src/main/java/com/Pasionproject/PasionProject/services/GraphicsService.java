@@ -17,7 +17,11 @@ public class GraphicsService {
     GraphicsRepo graphicsRepo;
 
     public Graphics createGraphics(Graphics graphics){
-        return graphicsRepo.save(graphics);
+        Graphics newGraphics = graphicsRepo.save(graphics);
+
+        newGraphics.setAmount();
+
+        return graphicsRepo.save(newGraphics);
     }
 
     public List<Graphics> allGraphics(){
@@ -43,6 +47,7 @@ public class GraphicsService {
 
         updateGraphics.setName(graphics.getName());
         updateGraphics.setSize(graphics.getSize());
+        updateGraphics.setAmount();
 
         return graphicsRepo.save(updateGraphics);
     }

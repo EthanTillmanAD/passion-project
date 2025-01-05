@@ -12,6 +12,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequestMapping("/search")
 public class SearchController {
 
     private final Logger logger = LoggerFactory.getLogger(SearchController.class);
@@ -28,8 +30,8 @@ public class SearchController {
     SearchService searchService;
 
 
-    @GetMapping("/search/all")
-    public ResponseEntity<List<?>> searchCase(@RequestParam("title") String title){
+    @GetMapping("/title")
+    public ResponseEntity<List<?>> searchByTitle(@RequestParam("title") String title){
 
         if (searchService.findAllComputer(title)){
             logger.info("All Computers Found");
@@ -68,5 +70,13 @@ public class SearchController {
     }
 
 
+    @GetMapping("/names")
+    public ResponseEntity<List<Object>> searchByName(@RequestParam("name") String name){
 
-}
+            return new ResponseEntity<>(searchService.searchWithName(name), HttpStatus.FOUND);//CPU
+
+     //       throw new NotFoundException("Cannot find anything with the name of " + name);
+        }
+    }
+
+

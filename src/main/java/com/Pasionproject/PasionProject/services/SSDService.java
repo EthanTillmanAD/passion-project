@@ -16,7 +16,12 @@ public class SSDService {
     SSDRepo sddRepo;
 
     public SSDrive createSdd(SSDrive sdd){
-        return sddRepo.save(sdd);
+
+        SSDrive ssDrive = sddRepo.save(sdd);
+
+        ssDrive.setAmount();
+
+        return sddRepo.save(ssDrive);
     }
 
     public List<SSDrive> allSsd(){

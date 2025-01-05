@@ -33,10 +33,10 @@ public class ComputerController {
         return new ResponseEntity<>(computerService.findComputerById(computerId), HttpStatus.OK);
     }
 
-    @PostMapping("/computer/motherboard/{motherBoardId}/case/{caseId}/power/{powerId}")
-    public ResponseEntity<Computer> buildComputer (@PathVariable Long motherBoardId, @PathVariable Long caseId, @PathVariable Long powerId){
+    @PostMapping("/computer/motherboard/{motherBoardId}/case/{caseId}/power/{powerId}/")
+    public ResponseEntity<Computer> buildComputer (@PathVariable Long motherBoardId, @PathVariable Long caseId, @PathVariable Long powerId, @RequestParam("name") String name){
         logger.info("Assembling Computer, MotherBoard With Id: " + motherBoardId + ", Case With Id: " + caseId + ", And PowerSupply With Id: " + powerId);
-        return new ResponseEntity<>(computerService.buildComputer(motherBoardId, powerId, caseId), HttpStatus.CREATED);
+        return new ResponseEntity<>(computerService.buildComputer(motherBoardId, powerId, caseId, name), HttpStatus.CREATED);
     }
 
     @PutMapping("/computer/{computerId}/motherboard/{motherboardId}")

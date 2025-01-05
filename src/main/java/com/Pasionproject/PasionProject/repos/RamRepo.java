@@ -1,5 +1,6 @@
 package com.Pasionproject.PasionProject.repos;
 
+import com.Pasionproject.PasionProject.entities_Tables.Cpus;
 import com.Pasionproject.PasionProject.entities_Tables.Ram;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -11,4 +12,7 @@ import java.util.List;
 public interface RamRepo extends CrudRepository<Ram, Long> {
     @Query("SELECT p FROM Ram p WHERE p.title = :title")
     List<Ram> findRamRyTitle(String title);
+
+    @Query("SELECT x FROM Ram x WHERE x.name LIKE %:name% ")
+    List<Ram> findByName(String name);
 }

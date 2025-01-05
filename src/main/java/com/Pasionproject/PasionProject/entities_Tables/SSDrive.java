@@ -1,5 +1,6 @@
 package com.Pasionproject.PasionProject.entities_Tables;
 
+import com.Pasionproject.PasionProject.enums.BigSize;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,7 +21,9 @@ public class SSDrive {
     private String name;
 
     @NotNull
-    private Integer size;
+    private BigSize size;
+
+    private String amount;
 
     public Long getId() {
         return id;
@@ -38,15 +41,23 @@ public class SSDrive {
         this.name = name;
     }
 
-    public Integer getSize() {
+    public @NotNull BigSize getSize() {
         return size;
     }
 
-    public void setSize(Integer size) {
+    public void setSize(@NotNull BigSize size) {
         this.size = size;
     }
 
     public String getTitle() {
         return title;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount() {
+        this.amount = getSize().getType();
     }
 }

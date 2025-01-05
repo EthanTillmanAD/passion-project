@@ -16,7 +16,10 @@ public class RamService {
     private RamRepo ramRepo;
 
     public Ram createRam(Ram ram){
-       return ramRepo.save(ram);
+       Ram thisRam = ramRepo.save(ram);
+        thisRam.setAmount();
+
+       return ramRepo.save(thisRam);
     }
 
     public List<Ram> listOfCreatedRam(){
@@ -44,6 +47,7 @@ public class RamService {
 
         ramToUpdate.setName(ram.getName());
         ramToUpdate.setSize(ram.getSize());
+        ramToUpdate.setAmount();
 
        return ramRepo.save(ramToUpdate);
 
@@ -53,7 +57,9 @@ public class RamService {
         ramRepo.deleteById(id);
     }
 
+    public void setRamSize(){
 
+    }
 
 
 }

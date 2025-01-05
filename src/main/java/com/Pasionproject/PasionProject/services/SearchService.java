@@ -2,6 +2,7 @@ package com.Pasionproject.PasionProject.services;
 
 
 import com.Pasionproject.PasionProject.entities_Tables.*;
+import com.Pasionproject.PasionProject.exception.NotFoundException;
 import com.Pasionproject.PasionProject.repos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,8 +36,9 @@ public class SearchService {
 
 
 
+    // SEARCH METHODS FOR TITLE
 
-    public List<PcCase> searchForCase(String title){
+        public List<PcCase> searchForCase(String title){
         title = title.toLowerCase();
         return caseRepo.findPcCaseByTitle(title);
     }
@@ -81,6 +83,8 @@ public class SearchService {
     }
 
 
+
+// BOOLEAN METHODS
 
 
     public Boolean findAllSsd(String title){
@@ -170,6 +174,39 @@ public class SearchService {
                 }
         } return false;
     }
+
+
+    // SEARCH FOR NAME
+
+
+
+    public List<Object> searchWithName(String name){
+
+            List<Object> test = new ArrayList<>();
+            test.addAll(cpuRepo.findByName(name));
+            test.addAll(caseRepo.findByName(name));
+            test.addAll(graphicsRepo.findByName(name));
+            test.addAll(hddRepo.findByName(name));
+            test.addAll(powerSupplyRepo.findByName(name));
+            test.addAll(ramRepo.findByName(name));
+            test.addAll(ssdRepo.findByName(name));
+
+
+
+        if (test.isEmpty()){
+            throw new NotFoundException("Can't find any part with name: " + name);
+        }
+        return test;
+
+    }
+
+
+
+
+
+   
+
+
 
 
 }

@@ -9,6 +9,10 @@ import java.util.List;
 
 @Repository
 public interface CpuRepo extends CrudRepository<Cpus, Long> {
-    @Query("SELECT p FROM Cpus p WHERE p.title = :title")
+    @Query("SELECT p FROM Cpus p WHERE p.title LIKE %:title%")
     List<Cpus> findCpusByTitle(String title);
+
+    @Query("SELECT x FROM Cpus x WHERE x.name LIKE %:name% ")
+    List<Cpus> findByName(String name);
+
 }

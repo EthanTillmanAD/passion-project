@@ -1,10 +1,10 @@
 package com.Pasionproject.PasionProject.entities_Tables;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.Pasionproject.PasionProject.enums.SmallSize;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -21,8 +21,12 @@ public class Ram {
     @NotEmpty
     private String name;
 
+
     @NotNull
-    private Integer size;
+    private SmallSize size;
+
+
+    private String amount;
 
     public Long getId() {
         return id;
@@ -40,15 +44,23 @@ public class Ram {
         this.name = name;
     }
 
-    public Integer getSize() {
+    public SmallSize getSize() {
         return size;
     }
 
-    public void setSize(Integer size) {
+    public void setSize(SmallSize size) {
         this.size = size;
     }
 
     public String getTitle() {
         return title;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount() {
+        this.amount = getSize().getType();
     }
 }

@@ -2,6 +2,7 @@ package com.Pasionproject.PasionProject.controllers;
 
 import com.Pasionproject.PasionProject.entities_Tables.Ram;
 import com.Pasionproject.PasionProject.services.RamService;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class RamController {
     }
 
     @PostMapping("/ram")
-    public ResponseEntity<Ram> createNewRam(@RequestBody Ram ram){
+    public ResponseEntity<Ram> createNewRam(@Valid @RequestBody Ram ram){
         logger.info("Creating Ram");
         return new ResponseEntity<>(ramService.createRam(ram), HttpStatus.CREATED);
     }

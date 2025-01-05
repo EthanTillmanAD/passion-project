@@ -24,12 +24,12 @@ public class MotherBoardController {
     private final Logger logger = LoggerFactory.getLogger(MotherBoardController.class);
 
 
-    @PostMapping("/motherboard/cpu/{cpuId}/graphics/{graphicsId}/ssd/{ssdId}/hdd/{hddId}/ramOne/{ramOneId}/ramTwo/{ramTwoId}")
+    @PostMapping("/motherboard/cpu/{cpuId}/graphics/{graphicsId}/ssd/{ssdId}/hdd/{hddId}/ramOne/{ramOneId}/ramTwo/{ramTwoId}/")
     public ResponseEntity<MotherBoard> buildMotherBoard (@Valid @PathVariable Long cpuId, @PathVariable Long graphicsId, @PathVariable Long ssdId,
-                                                         @PathVariable Long hddId, @PathVariable Long ramOneId, @PathVariable Long ramTwoId ){
+                                                         @PathVariable Long hddId, @PathVariable Long ramOneId, @PathVariable Long ramTwoId, @RequestParam("name") String name){
         logger.info("Building MotherBoard With Cpu Id: " + cpuId + ", Gpu Id: " + graphicsId + ", Ssd Id: " + ssdId + ", Hdd Id: " + hddId +
                 ", First Ram Id: " + ramOneId + ", And Second Ram Id: " + ramTwoId);
-        return new ResponseEntity<>(motherBoardService.buildMotherBoardByPiece(cpuId,graphicsId,hddId,ssdId,ramOneId,ramTwoId), HttpStatus.CREATED);
+        return new ResponseEntity<>(motherBoardService.buildMotherBoardByPiece(cpuId,graphicsId,hddId,ssdId,ramOneId,ramTwoId, name), HttpStatus.CREATED);
     }
 
    @GetMapping("/motherboard")

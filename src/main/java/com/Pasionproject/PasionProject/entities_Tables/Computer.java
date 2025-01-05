@@ -14,6 +14,8 @@ public class Computer {
 
     private final String title = "COMPUTER";
 
+    @NotEmpty
+    private String name;
 
     @OneToOne
     @JoinColumn(name = "pc_case")
@@ -64,5 +66,13 @@ public class Computer {
 
     public String getTitle() {
         return title;
+    }
+
+    public @NotEmpty String getName() {
+        return name;
+    }
+
+    public void setName(@NotEmpty String name) {
+        this.name = name;
     }
 }

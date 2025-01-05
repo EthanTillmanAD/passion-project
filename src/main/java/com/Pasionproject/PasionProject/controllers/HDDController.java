@@ -2,6 +2,7 @@ package com.Pasionproject.PasionProject.controllers;
 
 import com.Pasionproject.PasionProject.entities_Tables.HDD;
 import com.Pasionproject.PasionProject.services.HDDService;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class HDDController {
     }
 
     @PostMapping("/hdd")
-    public ResponseEntity<HDD> createNewHdd(@RequestBody HDD hdd){
+    public ResponseEntity<HDD> createNewHdd(@Valid @RequestBody HDD hdd){
         logger.info("Creating A New Hdd");
         return new ResponseEntity<>(hddService.createHdd(hdd), HttpStatus.CREATED);
     }

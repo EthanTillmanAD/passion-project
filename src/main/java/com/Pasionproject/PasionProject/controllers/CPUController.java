@@ -26,7 +26,7 @@ public class CPUController {
     @GetMapping("/cpu")
     public ResponseEntity<List<Cpus>> getAllCpu(){
         logger.info("Pulling Up All Cpu's In System");
-        return ResponseEntity.ok(cpuService.allSsd());
+        return ResponseEntity.ok(cpuService.allCpus());
     }
 
     @GetMapping("/cpu/{cpuId}")

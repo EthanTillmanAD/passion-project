@@ -2,6 +2,7 @@ package com.Pasionproject.PasionProject.controllers;
 
 import com.Pasionproject.PasionProject.entities_Tables.PowerSupply;
 import com.Pasionproject.PasionProject.services.PowerSupplyService;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class PowerSupplyController {
     }
 
     @PostMapping("/power")
-    public ResponseEntity<PowerSupply> addPowerSupply(@RequestBody PowerSupply powerSupply){
+    public ResponseEntity<PowerSupply> addPowerSupply(@Valid @RequestBody PowerSupply powerSupply){
         logger.info("Creating PowerSupply");
         return new ResponseEntity<>(powerSupplyService.createPowerSupply(powerSupply), HttpStatus.CREATED);
     }

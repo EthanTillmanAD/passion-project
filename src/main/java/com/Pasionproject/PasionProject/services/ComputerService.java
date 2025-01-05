@@ -26,7 +26,7 @@ public class ComputerService {
 
 
 
-    public Computer buildComputer(Long motherBoard1, Long powerSupply1, Long pcCase1){
+    public Computer buildComputer(Long motherBoard1, Long powerSupply1, Long pcCase1, String name){
         Computer computer = new Computer();
 
         PcCase pcCase = caseService.findCaseById(pcCase1);
@@ -37,6 +37,7 @@ public class ComputerService {
         computer.setaCase(pcCase);
         computer.setMotherBoard(motherBoard);
         computer.setPowerSupply(powerSupply);
+        computer.setName(name);
 
        return computerRepo.save(computer);
     }

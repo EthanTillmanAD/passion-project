@@ -1,5 +1,6 @@
 package com.Pasionproject.PasionProject.entities_Tables;
 
+import com.Pasionproject.PasionProject.enums.SmallSize;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,7 +21,9 @@ public class Graphics {
     private String name;
 
     @NotNull
-    private Integer size;
+    private SmallSize size;
+
+    private String amount;
 
     public Long getId() {
         return id;
@@ -38,15 +41,23 @@ public class Graphics {
         this.name = name;
     }
 
-    public Integer getSize() {
+    public @NotNull SmallSize getSize() {
         return size;
     }
 
-    public void setSize(Integer size) {
+    public void setSize(@NotNull SmallSize size) {
         this.size = size;
     }
 
     public String getTitle() {
         return title;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount() {
+        this.amount = getSize().getType();
     }
 }

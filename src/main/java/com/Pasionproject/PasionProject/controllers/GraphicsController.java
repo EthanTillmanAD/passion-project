@@ -5,6 +5,7 @@ import com.Pasionproject.PasionProject.entities_Tables.Cpus;
 import com.Pasionproject.PasionProject.entities_Tables.Graphics;
 import com.Pasionproject.PasionProject.repos.GraphicsRepo;
 import com.Pasionproject.PasionProject.services.GraphicsService;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class GraphicsController {
     }
 
     @PostMapping("/graphics")
-    public ResponseEntity<Graphics> createNewGraphics(@RequestBody Graphics graphics){
+    public ResponseEntity<Graphics> createNewGraphics(@Valid @RequestBody Graphics graphics){
         logger.info("Creating Gpu");
         return new ResponseEntity<>(graphicsService.createGraphics(graphics), HttpStatus.CREATED);
     }

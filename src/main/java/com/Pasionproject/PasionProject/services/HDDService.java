@@ -17,7 +17,11 @@ public class HDDService {
     HDDRepo hddRepo;
 
     public HDD createHdd(HDD hdd){
-        return hddRepo.save(hdd);
+
+       HDD newHdd = hddRepo.save(hdd);
+
+        newHdd.setAmount();
+        return hddRepo.save(newHdd);
     }
 
     public List<HDD> allHdd(){
@@ -43,6 +47,7 @@ public class HDDService {
 
        updateHdd.setName(hdd.getName());
        updateHdd.setSize(hdd.getSize());
+       updateHdd.setAmount();
 
        return hddRepo.save(updateHdd);
     }

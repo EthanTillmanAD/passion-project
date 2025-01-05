@@ -34,7 +34,7 @@ public class MotherBoardService {
 
 
 
-    public MotherBoard buildMotherBoardByPiece(Long cpu, Long graphics, Long hdd, Long ssd, Long ram1, Long ram2){
+    public MotherBoard buildMotherBoardByPiece(Long cpu, Long graphics, Long hdd, Long ssd, Long ram1, Long ram2, String name){
 
         Cpus myCpu = cpuService.findCpuById(cpu);
         Graphics myGraphics = graphicsService.findGraphicsById(graphics);
@@ -52,6 +52,7 @@ public class MotherBoardService {
             motherBoard.addSsd(ssDrive);
             motherBoard.addRam(firstRam);
             motherBoard.addRam(secondRam);
+            motherBoard.setName(name);
 
             return motherBoardRepo.save(motherBoard);
         }

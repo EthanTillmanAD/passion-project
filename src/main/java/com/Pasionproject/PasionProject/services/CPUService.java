@@ -23,7 +23,7 @@ public class CPUService {
         return cpuRepo.save(cpu);
     }
 
-    public List<Cpus> allSsd(){
+    public List<Cpus> allCpus(){
         List<Cpus> cpus = new ArrayList<>();
         for (Cpus cpu: cpuRepo.findAll()){
             cpus.add(cpu);
@@ -32,7 +32,7 @@ public class CPUService {
     }
 
     public Cpus findCpuById(Long id){
-        for (Cpus cpu: allSsd()){
+        for (Cpus cpu: allCpus()){
             if (cpu.getId().equals(id)){
                 return cpu;
             }
